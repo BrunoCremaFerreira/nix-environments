@@ -9,10 +9,13 @@ stdenv.mkDerivation rec {
 
   shellHook = ''
     export PS1="[env:android|\[\e[1m\]\w\[\e[0m\]]$ "
+    export ANDROID_JAVA_HOME=${pkgs.jdk.home}
+    export LD_LIBRARY_PATH=/usr/lib:/usr/lib32
   '';
 
   buildInputs = [
-    "openjdk-11.0.15+10"
-    "android-studio-canary"
+    android-studio
+    vscode
+    jdk
   ];
 }
